@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ParentRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cardview_dark_background">
+
+
+    <!-- Toolbar at the top -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/darker_gray"
+        android:elevation="4dp"
+        android:fitsSystemWindows="true"
+        android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:logo="@drawable/ic_launcher_foreground"
+        app:menu="@menu/nav_menu"
+        app:title="@string/app_name" />
+
+    <!-- Content area (Replace this with your main content layout) -->
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar">
+
+
+        <LinearLayout
+            android:id="@+id/parentLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/linearLayoutAddNewTaskView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/editTextNewTask"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:layout_weight="3"
+                    android:background="@android:drawable/editbox_background"
+                    android:backgroundTint="@android:color/darker_gray"
+                    android:drawableEnd="@android:drawable/ic_input_get"
+                    android:ems="10"
+                    android:gravity="top|start"
+                    android:hint="Neue Aufgabe"
+                    android:inputType="textMultiLine"
+                    android:maxLines="7"
+                    android:minLines="1" />
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_weight="3"
+                    app:srcCompat="@drawable/baseline_pending"
+                    app:tint="#2196F3" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/floatingActionButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|right"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:foregroundGravity="bottom|right"
+                    android:visibility="gone"
+                    app:backgroundTint="@android:color/darker_gray"
+                    app:fabSize="mini"
+                    app:srcCompat="@android:drawable/ic_input_add" />
+
+                <!-- <com.google.android.material.button.MaterialButton
+                     android:id="@+id/buttonNewTask"
+                     android:layout_width="wrap_content"
+                     android:layout_height="48dp"
+                     android:layout_weight="1"
+                     android:insetTop="0dp"
+                     android:insetBottom="0dp"
+                     app:icon="@android:drawable/ic_input_add"
+                     app:iconPadding="0dp"
+                     app:iconSize="20dp"
+                     app:iconTint="@color/black" />-->
+
+            </LinearLayout>
+
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:id="@+id/coordinatorLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="100dp"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerviewAllTasks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/recycler_row">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+        </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButtonNewTask"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="20dp"
+            android:clickable="true"
+            app:srcCompat="@android:drawable/ic_input_add" />
+
+
+    </FrameLayout>
+
+
+</RelativeLayout>
+
+<!-- activity_main.xml
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+     Your main content here (e.g., a fragment container)
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="horizontal"
+       >
+
+        <EditText
+            android:id="@+id/editTextText"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_weight="3"
+            android:background="@android:drawable/editbox_background"
+            android:backgroundTint="@color/material_dynamic_primary70"
+            android:drawableEnd="@android:drawable/ic_input_get"
+            android:ems="10"
+            android:hint="neue Aufgabe" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Button" />
+    </LinearLayout>
+    </FrameLayout>
+
+     Navigation View
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/nav_menu" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+-->
